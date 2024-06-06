@@ -8,6 +8,21 @@
 *成功读取到数据库：*  
 ![MySQL](IMG/img_1.png)
 2. 采用 Druid  数据库连接池连接数据库，从数据库中提取数据；  
+```angular2html
+    /**
+	 * 初始化连接池
+	 * @throws Exception
+	 */
+	public static void init() throws Exception {
+		Properties properties = new Properties();
+		
+		InputStream in = ConnectionFactory.class.getClassLoader().getResourceAsStream("druid.properties");  
+		properties.load(in); 		
+		dataSource = (DruidDataSource)DruidDataSourceFactory.createDataSource(properties);		
+		
+		in.close();
+	}
+```
 3. 利用 POI写 docx  文件、iText  读写 pdf  文件、ZXing  生成二维码，制作对应的 docx  格式和 pdf  格式的电子门票文件；  
 *生成docx门票凭证：*  
 ![DOCX.png](IMG/img_2.png)
